@@ -1,0 +1,30 @@
+<h1>Needs</h1>
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th>ID</th>
+        <th>
+      <%= t("activerecord.attributes.need.title", :default => t("activerecord.labels.title", :default => "Title")) %>
+    </th>
+        <th>Created at</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @needs.each do |need| -%>
+   <tr>
+    <td><%= need.id %></td>
+        <td><%= link_to need.title, need_path(need) %>
+    </td>
+        <td><%= need.created_at %></td>
+    <td>
+      <%= link_to "Show", need_path(need) %>
+      <%= link_to "Edit", edit_need_path(need) %>
+      <%= link_to "Destroy", need_path(need), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+    </td>
+    </tr>
+    <% end -%>
+   </tbody>
+</table>
+
+<%= link_to "New", new_need_path, :class => 'btn btn-primary' %>

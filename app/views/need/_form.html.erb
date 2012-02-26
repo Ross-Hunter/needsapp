@@ -1,0 +1,74 @@
+
+<div class="clearfix">
+   <%= f.label :title, t("activerecord.attributes.need.title", :default => "Title"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :title, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :desc, t("activerecord.attributes.need.desc", :default => "Desc"), :class => :label %>
+  <div class="input">
+    <%= f.text_area :desc, :class => 'text_area' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :datetime1, t("activerecord.attributes.need.datetime1", :default => "Datetime1"), :class => :label %>
+  <div class="input">
+    <%= f.datetime_select :datetime1, :class => 'datetime_select' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :integer1, t("activerecord.attributes.need.integer1", :default => "Integer1"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :integer1, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :binary1, t("activerecord.attributes.need.binary1", :default => "Binary1"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :binary1, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :boolean1, t("activerecord.attributes.need.boolean1", :default => "Boolean1"), :class => :label %>
+  <div class="input">
+    <%= f.check_box :boolean1, :class => 'check_box' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :float1, t("activerecord.attributes.need.float1", :default => "Float1"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :float1, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :decimal1, t("activerecord.attributes.need.decimal1", :default => "Decimal1"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :decimal1, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :time1, t("activerecord.attributes.need.time1", :default => "Time1"), :class => :label %>
+  <div class="input">
+    <%= f.time_select :time1, :class => 'time_select' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :date1, t("activerecord.attributes.need.date1", :default => "Date1"), :class => :label %>
+  <div class="input">
+    <%= f.date_select :date1, :class => 'date_select' %>
+  </div>
+</div>
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", need_path %>
+</div>

@@ -1,0 +1,21 @@
+<h1>Listing needs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Date Needed</th>
+  </tr>
+
+<% @needs.each do |need| %>
+  <tr>
+    <td><%= link_to need.title, need %></td>
+    <td><%= need.desc %></td>
+    <td><%= need.datetime1 %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Need', new_need_path %>

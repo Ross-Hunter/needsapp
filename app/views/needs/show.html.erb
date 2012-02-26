@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @need.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @need.desc %>
+</p>
+
+<p>
+  <b>Datetime1:</b>
+  <%= @need.datetime1 %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_need_path(@need) %> |
+<%= link_to 'Back', needs_path %>
