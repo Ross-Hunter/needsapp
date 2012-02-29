@@ -15,6 +15,5 @@
 /tmp
 
 */database.yml
-config/database.yml
 
-database.yml
+*.DS_Store
