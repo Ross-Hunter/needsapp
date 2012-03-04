@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20120303190942) do
   create_table "needs", :force => true do |t|
     t.string   "title"
     t.text     "desc"
-    t.datetime "date"
+    t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
