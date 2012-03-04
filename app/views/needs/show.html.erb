@@ -15,6 +15,11 @@
   <%= @need.datetime1 %>
 </p>
 
+<p>
+  <b>Slots</b>
+  <%= @need.slots.first.name if @need.slots.any? %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_need_path(@need) %> |

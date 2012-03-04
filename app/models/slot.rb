@@ -1,3 +1,3 @@
 class Slot < ActiveRecord::Base
-	belongs_to :need
+  belongs_to :need
 end

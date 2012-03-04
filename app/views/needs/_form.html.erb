@@ -23,6 +23,21 @@
     <%= f.label :datetime1 %><br />
     <%= f.datetime_select :datetime1 %>
   </div>
+
+
+  <div class="slots">
+    <%= f.fields_for :slots do |s| %>
+    <div class ="slot">
+      <%= s.label :name %>
+      <%= s.text_field :name %>
+    </div>
+  <% end %>
+  </div>
+
+  <button id="new_slot">
+    Add Slot
+  </button>
+
   <div class="actions">
     <%= f.submit %>
   </div>

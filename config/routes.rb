@@ -1,5 +1,13 @@
 Needsapp2::Application.routes.draw do
-  resources :needs
+  resources :tags
+
+  resources :slots
+
+  resources :needs do
+    collection do
+      get :search
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

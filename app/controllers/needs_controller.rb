@@ -2,7 +2,11 @@ class NeedsController < ApplicationController
   # GET /needs
   # GET /needs.json
   def index
-    @needs = Need.all
+    start_date = params[:start_date].to_date || Date.today
+    end_date = params[:end_date].to_date || Date.today + 1.year
+    #start_date = Date.today
+    #end_date = Date.today + 1.year
+    @needs = Need.between(start_date, end_date).order(:datetime1)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +45,6 @@ class NeedsController < ApplicationController
   # POST /needs.json
   def create
     @need = Need.new(params[:need])
-
     respond_to do |format|
       if @need.save
         format.html { redirect_to @need, notice: 'Need was successfully created.' }
@@ -79,5 +82,9 @@ class NeedsController < ApplicationController
       format.html { redirect_to needs_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @needs = Need.search(params[:q])
   end
 end
