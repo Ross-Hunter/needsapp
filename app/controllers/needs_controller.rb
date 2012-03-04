@@ -2,11 +2,15 @@ class NeedsController < ApplicationController
   # GET /needs
   # GET /needs.json
   def index
-    start_date = params[:start_date].to_date || Date.today
-    end_date = params[:end_date].to_date || Date.today + 1.year
-    #start_date = Date.today
-    #end_date = Date.today + 1.year
-    @needs = Need.between(start_date, end_date).order(:datetime1)
+    if params[:start_date] && params[:end_date]
+      start_date = params[:start_date].to_date
+      end_date = params[:end_date].to_date
+    else
+      start_date = Date.today
+      end_date = Date.today + 1.year
+    end
+
+    @needs = Need.between(start_date, end_date).order(:date)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -2,7 +2,7 @@ class Need < ActiveRecord::Base
 	has_many :slots
 
 	#scope :not_expired, where(:datetime1 => Date.today..(Date.today + 1.year))
-	scope :between, lambda{|start_date, end_date| where(datetime1: start_date..end_date)}
+	scope :between, lambda{|start_date, end_date| where(date: start_date..end_date)}
 
 
 	accepts_nested_attributes_for :slots

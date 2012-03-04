@@ -12,11 +12,6 @@
 
     <!-- Le styles -->
     <%= stylesheet_link_tag    "application", :media => "all" %>
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
 
     <!-- Le fav and touch icons -->
     <link href="images/favicon.ico" rel="shortcut icon">
@@ -39,7 +34,7 @@
               <ul class="nav">
                   <li><%= link_to "Post a Need", "/needs/new"  %></li>
               </ul>
-              <form action="/needs/search" class="navbar-search pull-left">
+              <form action="/needs/search" class="navbar-search pull-right">
                 <input type="text" class="search-query" placeholder="Search" name="q">
               </form>
             </div><!--/.nav-collapse -->
