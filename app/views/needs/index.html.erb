@@ -1,5 +1,11 @@
 <h1>Listing needs</h1>
 
+<form action="/needs">
+  <input type="text" class="date-query" name="start_date" />
+  <input type="text" class="date-query" name="end_date" />
+  <input type="submit" value="Submit" />
+</form>
+
 <table>
   <tr>
     <th>Title</th>
@@ -11,7 +17,7 @@
   <tr>
     <td><%= link_to need.title, need %></td>
     <td><%= need.desc %></td>
-    <td><%= need.datetime1 %></td>
+    <td><%= need.date %></td>
   </tr>
 <% end %>
 </table>
