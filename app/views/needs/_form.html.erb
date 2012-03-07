@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :desc %><br />
-    <%= f.text_area :desc %>
+    <%= f.text_area :desc,
+                    :rows => 5 %>
   </div>
   <div class="field">
     <%= f.label :date %><br />
@@ -26,19 +27,21 @@
 
 
   <div class="slots">
+    <h4>Sign-Up Slots</h4>
     <%= f.fields_for :slots do |s| %>
     <div class ="slot">
       <%= s.label :name %>
+      <%= s.text_field :notes %>
       <%= s.text_field :name %>
     </div>
   <% end %>
   </div>
 
-  <button id="new_slot">
+  <button id="new_slot" class="btn">
     Add Slot
   </button>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Post Need', :class => 'btn' %>
   </div>
 <% end %>

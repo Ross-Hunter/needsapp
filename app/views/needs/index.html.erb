@@ -1,9 +1,9 @@
 <h1>Listing needs</h1>
 
 <form action="/needs">
-  <input type="text" class="date-query" name="start_date" />
-  <input type="text" class="date-query" name="end_date" />
-  <input type="submit" value="Submit" />
+  <input type="text" class="date-query" name="start_date" placeholder="From" />
+  <input type="text" class="date-query" name="end_date" placeholder="To"/>
+  <input type="submit" value="Submit" class="btn" />
 </form>
 
 <table>
@@ -11,6 +11,7 @@
     <th>Title</th>
     <th>Description</th>
     <th>Date Needed</th>
+    <th>Status</th>
   </tr>
 
 <% @needs.each do |need| %>
@@ -18,6 +19,14 @@
     <td><%= link_to need.title, need %></td>
     <td><%= need.desc %></td>
     <td><%= need.date %></td>
+    <td><%=
+      if need.slots.name.length > 0
+          @filled = '<span class="label label-success">Filled</span>'.html_safe
+      else
+          @filled = '<span class="label label-warning">Unfilled</span>'.html_safe
+        end
+        @filled
+        %></td>
   </tr>
 <% end %>
 </table>

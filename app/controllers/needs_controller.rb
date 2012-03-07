@@ -33,7 +33,7 @@ class NeedsController < ApplicationController
   # GET /needs/new.json
   def new
     @need = Need.new
-
+    @need.slots.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @need }

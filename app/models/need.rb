@@ -18,4 +18,5 @@ class Need < ActiveRecord::Base
     @needs
 	end
 
+
 end
