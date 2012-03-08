@@ -2,7 +2,7 @@
 <% body_class 'needs' %>
 
 <h1>Editing need</h1>
-
+<%= form_for(@need) do |f| %>
   <% if @need.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@need.errors.count, "error") %> prohibited this need from being saved:</h2>
@@ -15,35 +15,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :desc %><br />
-    <%= f.text_area :desc,
-                    :rows => 5 %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
+	<p>
+	  <b>Title:</b>
+	  <%= @need.title %>
+	</p>
 
+	<p>
+	  <b>Desc:</b>
+	  <%= @need.desc %>
+	</p>
+
+	<p>
+	  <b>Date:</b>
+	  <%= @need.date %>
+	</p>
 
   <div class="slots">
     <h4>Sign-Up Slots</h4>
+
+	<% @need.slots.each do |slot| %>
+	<p>
+	  <%= slot.notes %>
+	</p>
+	<% end %>
+
     <%= f.fields_for :slots do |s| %>
     <div class ="slot">
       <%= s.label :name %>
-      <%= s.text_field :notes %>
       <%= s.text_field :name %>
     </div>
   <% end %>
   </div>
-
-  <button id="new_slot" class="btn">
-    Add Slot
-  </button>
 
   <div class="actions">
     <%= f.submit 'Post Need', :class => 'btn' %>
@@ -51,3 +53,4 @@
 
 <%= link_to 'Show', @need %> |
 <%= link_to 'Back', needs_path %>
+<% end %>

@@ -2,7 +2,7 @@
 <% body_class 'needs' %>
 
 <h1>New need</h1>
-
+<%= form_for(@need) do |f| %>
   <% if @need.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@need.errors.count, "error") %> prohibited this need from being saved:</h2>
@@ -34,7 +34,7 @@
     <h4>Sign-Up Slots</h4>
     <%= f.fields_for :slots do |s| %>
     <div class ="slot">
-      <%= s.label :name %>
+      <%= s.label :notes %>
       <%= s.text_field :notes %>
 
     </div>
@@ -50,3 +50,4 @@
   </div>
 
 <%= link_to 'Back', needs_path %>
+<% end %>

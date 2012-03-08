@@ -15,11 +15,14 @@
   <%= @need.date %>
 </p>
 
-<p>
+<div>
   <b>Slots</b>
-  <%= @need.slots.first.name if @need.slots.any? %>
-</p>
-
+	<% @need.slots.each do |slot| %>
+	<p>
+	  <%= slot.notes %> - <%= slot.name %>
+	</p>
+	<% end %>
+</div>
 
 
 <%= link_to 'Edit', edit_need_path(@need) %> |

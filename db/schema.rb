@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120303190942) do
 
   create_table "slots", :force => true do |t|
     t.string   "name"
-    t.text     "notes"
+    t.string   "notes"
     t.integer  "need_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
