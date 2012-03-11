@@ -39,6 +39,8 @@ td{
 
 .btn{
 	margin-bottom: 10px;
+	font-size: 13px;
+	line-height: 27px;
 }
 
 #index{
@@ -68,8 +70,6 @@ td{
 				.btn{
 					right: 0px;
 					position: absolute;
-					font-size: 13px;
-					line-height: 27px;
 					height: 37px;
 				}
 				.text{
@@ -85,14 +85,27 @@ td{
 	#new_slot{
 		float: left;
 		clear: left;
+		width: 110px;
 	}
 	#post_need{
-		float: right;
-		clear: right;
+		width: 110px;
+		margin-top: 20px;
 	}
 	.actions{
 		@include clearfix;
 	}
-
+	.slot{
+		@include clearfix;
+		input{
+			width: 200px;
+			float: left;
+		}
+	}
+	.remove_slot{
+		float: left;
+		clear: left;
+		width: 88px;
+		color: #fff;
+	}
 }
 

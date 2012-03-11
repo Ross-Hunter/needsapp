@@ -28,18 +28,18 @@
 
   <div class="slots">
     <h4>Sign-Up Slots</h4>
+    <button id="new_slot" class="btn btn-success">
+      Add Slot
+    </button>
     <%= f.fields_for :slots do |s| %>
     <div class ="slot">
+      <%= link_to 'Remove Slot', s.object, :class=> 'btn btn-danger remove_slot', method: :delete%>
       <%= s.text_field :name %>
-      <%= link_to 'Remove Slot', s.object, :class=> 'btn remove_slot', method: :delete%>
     </div>
   <% end %>
   </div>
 
   <div class="actions">
-    <button id="new_slot" class="btn">
-      Add Slot
-    </button>
-    <%= f.submit 'Post Need', :class => 'btn submit', :id => 'post_need' %>
+    <%= f.submit 'Post Need', :class => 'btn submit btn-primary', :id => 'post_need' %>
   </div>
 <% end %>

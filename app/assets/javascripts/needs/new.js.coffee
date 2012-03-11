@@ -14,10 +14,13 @@ $('#new_slot').on 'click', ()->
 	$newSlot.find('a').attr('href', '/slots')
 
 	$newSlot.appendTo('.slots')
+	$('.slot').last().find('a').show()
 	false
 
 $('.remove_slot').on 'click', ()->
 	if $(this).attr('href') == "/slots"
 		$(this).parent().remove()
 		false
+
+$('.remove_slot').first().hide()
 

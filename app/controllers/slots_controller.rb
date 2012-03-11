@@ -76,7 +76,7 @@ class SlotsController < ApplicationController
     @slot.destroy
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to :back, notice: 'Slot was removed.' }
       format.json { head :no_content }
     end
   end
