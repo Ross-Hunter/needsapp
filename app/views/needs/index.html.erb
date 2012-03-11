@@ -3,13 +3,17 @@
 
 <% @needs.each do |need| %>
   <div class="need">
-    <%= form_for(need) do |f| %>
+    <%= form_for(need) do |form| %>
     <div class="slots">
       <h5>Sign Up to Help</h5>
-      <%= f.fields_for :slots do |s| %>
+      <%= form.fields_for :slots do |slot| %>
         <div class ="slot">
-          <%= s.text_field :name %>
-          <%= f.submit 'Save', :class => 'btn' %>
+          <% if slot.object.name > '' %>
+            <%= slot.text_field :name, :readOnly => 'true', :class=> 'text' %>
+          <% else %>
+            <%= slot.text_field :name, :class=> 'text' %>
+            <%= form.submit 'Sign Up', :class => 'btn' %>
+          <% end %>
         </div>
       <% end %>
       </div>
