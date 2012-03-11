@@ -6,6 +6,8 @@
 //@import "compass/reset";
 //@import "compass_twitter_bootstrap";
 
+@import "compass/utilities/general/clearfix";
+
 body{
 	background: url(/assets/bright_squares.png);
 	height: 100%;
@@ -31,12 +33,54 @@ td{
 
 .btn{
 	margin-bottom: 10px;
+	&.filling-slot{
+		position: relative;
+		z-index: 10 !important;
+	}
 }
 
-.slots{
+#new .slots{
 	padding: 20px;
 	margin-bottom: 10px;
 	border-radius: 10px;
 	border: 1px solid;
 	background: #ccc;
 }
+
+
+
+#index{
+	.need{
+		@include clearfix;
+		padding: 20px;
+		margin-bottom: 10px;
+		border-radius: 10px;
+		border: 1px solid;
+		form{
+			margin: 0;
+		}
+		h3{
+			display: inline;
+		}
+		.desc{
+			clear: left;
+		}
+		.date{
+			display: inline;
+		}
+		.slots{
+			float: right;
+
+			.slot{
+				@include clearfix;
+				padding-right: 50px;
+				position: relative;
+				input{
+					float: left;
+					z-index: 10;
+				}
+			}
+		}
+	}
+}
+

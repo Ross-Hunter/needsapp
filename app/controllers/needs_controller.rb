@@ -51,7 +51,7 @@ class NeedsController < ApplicationController
     @need = Need.new(params[:need])
     respond_to do |format|
       if @need.save
-        format.html { redirect_to @need, notice: 'Need was successfully created.' }
+        format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully created." }
         format.json { render json: @need, status: :created, location: @need }
       else
         format.html { render action: "new" }
@@ -67,7 +67,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.update_attributes(params[:need])
-        format.html { redirect_to @need, notice: 'Need was successfully updated.' }
+        format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

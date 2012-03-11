@@ -1,3 +1,21 @@
+<% body_id 'index' %>
+<% body_class 'needs' %>
+
 <% @needs.each do |need| %>
-	<p><%= link_to need.title, need %> </p>
+  <div class="need">
+    <%= form_for(need) do |f| %>
+    <div class="slots">
+      <h5>Sign Up to Help</h5>
+      <%= f.fields_for :slots do |s| %>
+        <div class ="slot">
+          <%= s.text_field :name %>
+          <%= f.submit 'Save', :class => 'btn' %>
+        </div>
+      <% end %>
+      </div>
+    <% end %>
+    <h3 class="title"><%= need.title %></h3>
+    <span class="date"> - <%= need.date %></span>
+    <div class="desc"><%= need.desc %></div>
+  </div>
 <% end %>
