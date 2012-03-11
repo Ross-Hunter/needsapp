@@ -11,11 +11,17 @@
 body{
 	background: url(/assets/bright_squares.png);
 	height: 100%;
+	font-size: 16px;
 }
 
-.container{
-	//width: 960px;
+input{
+	height: 28px;
+	font-size: 18px;
+	width: 100%;
+}
 
+h1, h4{
+	margin-bottom: 10px;
 }
 
 #page{
@@ -33,21 +39,7 @@ td{
 
 .btn{
 	margin-bottom: 10px;
-	&.filling-slot{
-		position: relative;
-		z-index: 10 !important;
-	}
 }
-
-#new .slots{
-	padding: 20px;
-	margin-bottom: 10px;
-	border-radius: 10px;
-	border: 1px solid;
-	background: #ccc;
-}
-
-
 
 #index{
 	.need{
@@ -72,19 +64,35 @@ td{
 			float: right;
 			.slot{
 				@include clearfix;
-				padding-right: 70px;
 				position: relative;
 				.btn{
-					float: left;
+					right: 0px;
+					position: absolute;
+					font-size: 13px;
+					line-height: 27px;
+					height: 37px;
 				}
 				.text{
-					position: relative;
 					float: left;
-					z-index: 10px;
-					width: 170px;
+					width: 250px;
 				}
 			}
 		}
 	}
+}
+
+#edit, #create{
+	#new_slot{
+		float: left;
+		clear: left;
+	}
+	#post_need{
+		float: right;
+		clear: right;
+	}
+	.actions{
+		@include clearfix;
+	}
+
 }
 

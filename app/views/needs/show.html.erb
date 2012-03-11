@@ -15,15 +15,6 @@
   <%= @need.date %>
 </p>
 
-<div>
-  <b>Slots</b>
-	<% @need.slots.each do |slot| %>
-	<p>
-	  <%= slot.notes %> - <%= slot.name %>
-	</p>
-	<% end %>
-</div>
-
 
 <%= link_to 'Edit', edit_need_path(@need) %> |
 <%= link_to 'Back', needs_path %>

@@ -3,7 +3,7 @@ class CreateNeeds < ActiveRecord::Migration
     create_table :needs do |t|
       t.string :title
       t.text :desc
-      t.date :date
+      t.date :datetime
 
       t.timestamps
     end

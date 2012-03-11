@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Notes</th>
     <th>Need</th>
     <th></th>
     <th></th>
@@ -13,7 +12,6 @@
 <% @slots.each do |slot| %>
   <tr>
     <td><%= slot.name %></td>
-    <td><%= slot.notes %></td>
     <td><%= slot.need %></td>
     <td><%= link_to 'Show', slot %></td>
     <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
