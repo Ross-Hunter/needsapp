@@ -1,4 +1,5 @@
 class Need < ActiveRecord::Base
+	validates_presence_of :title, :date
 	has_many :slots
 
 	#scope :not_expired, where(:datetime1 => Date.today..(Date.today + 1.year))
@@ -8,12 +9,16 @@ class Need < ActiveRecord::Base
 	accepts_nested_attributes_for :slots
 
 	def self.search(search_string)
-		words = search_string.split(' ')
-    @needs = []
-    words.each do |word|
-      Need.where("title like '%#{word}%'").each do |need|
-        @needs << need unless @needs.include?(need)
-      end
+		if search_string == ''
+			@needs = Need.all
+		else
+			words = search_string.split(' ')
+    	@needs = []
+    	words.each do |word|
+      	Need.where("title like '%#{word}%'").each do |need|
+        	@needs << need unless @needs.include?(need)
+      	end
+    	end
     end
     @needs
 	end

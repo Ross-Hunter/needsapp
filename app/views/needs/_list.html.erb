@@ -16,7 +16,10 @@
       </div>
     <% end %>
     <h3 class="title"><%= link_to need.title, need %></h3>
-    <span class="date"> - <%= need.date %></span>
+    <span class="date"> - <%= need.date.strftime('%Y-%m-%d') %></span>
+    <% if need.time %>
+      <span class="time"> - <%= need.time.strftime('%l:%M %p') %></span>
+    <% end %>
     <div class="desc"><%= need.desc %></div>
   </div>
 <% end %>
