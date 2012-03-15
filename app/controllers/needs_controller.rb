@@ -6,9 +6,14 @@ class NeedsController < ApplicationController
     start_date = Date.today
     end_date = Date.today + 1.year
 
-    if params[:start_date] && params[:end_date]
-      if params[:start_date != ''] && params[:end_date != '']
+    if params[:start_date]
+      if params[:start_date] > ''
         start_date = params[:start_date].to_date
+      end
+    end
+
+    if params[:end_date]
+      if params[:end_date] > ''
         end_date = params[:end_date].to_date
       end
     end
