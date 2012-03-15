@@ -1,4 +1,5 @@
 class Need < ActiveRecord::Base
+
 	validates_presence_of :title, :date
 	has_many :slots
 

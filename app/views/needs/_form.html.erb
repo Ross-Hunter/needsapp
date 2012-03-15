@@ -25,8 +25,10 @@
     <%= f.date_select :date %>
   </div>
   <div class="field">
-    <%= f.label :time %><br />
-    <%= f.time_select :time, {:minute_step => 15, :ampm => true, :include_blank => true, :ignore_date=>true, :default => nil} %>
+    <%= f.label :time1 %><br />
+    <%= f.select :time1, 1..12, {:include_blank => true, :default => nil} %>
+    <%= f.select :time2, ['00', '15', '30', '45'], {:include_blank => true, :default => nil} %>
+    <%= f.select :time3, ['am', 'pm'], {:include_blank => true, :default => nil} %>
   </div>
 
 

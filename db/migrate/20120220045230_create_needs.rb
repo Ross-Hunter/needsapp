@@ -4,7 +4,9 @@ class CreateNeeds < ActiveRecord::Migration
       t.string :title
       t.text :desc
       t.date :date
-      t.time :time
+	    t.text :time1
+	    t.text :time2
+	    t.text :time3
 
       t.timestamps
     end
