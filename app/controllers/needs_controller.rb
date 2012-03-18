@@ -103,4 +103,5 @@ class NeedsController < ApplicationController
   def search
     @needs = Need.search(params[:q])
   end
+
 end

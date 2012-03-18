@@ -1,4 +1,6 @@
 Needsapp2::Application.routes.draw do
+  resources :categories
+
   resources :tags
 
   resources :slots
