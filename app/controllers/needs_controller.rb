@@ -24,6 +24,10 @@ class NeedsController < ApplicationController
       @needs = Need.between(start_date, end_date).order(:date)
     end
 
+    if params["need[category]"]
+      @needs = Need.where(:category_id => params["need[category]"])
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @needs }

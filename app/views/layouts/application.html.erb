@@ -59,10 +59,11 @@
                 <h3>Filter</h3>
                  <ul class="nav nav-list">
                     <form action="/needs">
-                      <li><input type="text" id="search" class="search" placeholder="Search Needs" name="q" /></li>
+                      <li><input type="text" id="search" class="search" placeholder="Search Terms" name="q" /></li>
                       <li><input data-datepicker="datepicker" id="start_date" class="small date-query" type="text" name="start_date" placeholder="From"</li>
                       <li><input data-datepicker="datepicker" id="end_date" class="small date-query" type="text" name="end_date" placeholder="To"</li>
-                      <li><input type="submit" value="Submit" class="btn btn-info" /></li>
+                      <li><%= collection_select(:need, :category, Category.all, :id, :title, :include_blank => 'all') %></li>
+                      <li><input type="submit" value="Search Needs" class="btn btn-info" /></li>
                     </form>
                 </ul>
             </div>

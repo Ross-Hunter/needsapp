@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :category_id %><br />
-    <%= f.select(:category_id, Category.all.collect {|c| [ c.title, c.id ] }, {:include_blank => 'None'}) %>
+    <%= f.collection_select :category_id, Category.all, :id, :title, :include_blank => 'None' %>
   </div>
   <div class="field">
     <%= f.label :desc, 'Description' %><br />
