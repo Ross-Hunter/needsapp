@@ -4,5 +4,4 @@
 <h1>Editing need</h1>
 <%= render 'form' %>
 
-<%= link_to 'Show', @need %> |
-<%= link_to 'Back', needs_path %>
+<%= link_to 'Delete Need', @need, confirm: 'Are you sure?', method: :delete, :class => 'btn btn-danger', :id => 'delete_need' %>
