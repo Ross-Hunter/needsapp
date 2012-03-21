@@ -80,4 +80,10 @@ class CategoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def needs
+    @category = Category.find(params[:id])
+    @needs = @category.needs
+  end
+
 end

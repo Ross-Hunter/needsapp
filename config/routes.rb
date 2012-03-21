@@ -1,7 +1,9 @@
 Needsapp2::Application.routes.draw do
-  resources :categories
-
-  resources :tags
+  resources :categories do
+    member do
+      get :needs
+    end
+  end
 
   resources :slots
 
