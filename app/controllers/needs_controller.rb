@@ -2,30 +2,22 @@ class NeedsController < ApplicationController
   # GET /needs
   # GET /needs.json
   def index
-    start_date = Date.today
-    end_date = Date.today + 1.year
+    start_date  = Date.today
+    end_date    = Date.today + 1.year
 
-    if params[:start_date]
-      if params[:start_date] > ''
+    if params[:start_date] && params[:start_date] > ''
         start_date = params[:start_date].to_date
-      end
     end
 
-    if params[:end_date]
-      if params[:end_date] > ''
+    if params[:end_date] && params[:end_date] > ''
         end_date = params[:end_date].to_date
-      end
     end
 
-    if params[:q]
-      @needs = Need.between(start_date, end_date).order(:date).search(params[:q])
-    else
-      @needs = Need.between(start_date, end_date).order(:date)
-    end
+    query = Need.scoped
+    query = query.between(start_date, end_date).order(:date)
+    query = query.where(:category_id => params["need"]["category"]) if params["need"] && params["need"]["category"]
 
-    if params["need[category]"]
-      @needs = Need.where(:category_id => params["need[category]"])
-    end
+    @needs = query.search(params[:q])
 
     respond_to do |format|
       format.html # index.html.erb
