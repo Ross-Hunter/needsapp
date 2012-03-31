@@ -32,7 +32,10 @@
             <a class="brand" href="/">NHL Church Needs Board</a>
             <div class="nav-collapse">
               <ul class="nav">
-                  <li><%= link_to "Post a Need", "/needs/new"  %></li>
+              <% if current_user %>
+                <li><%= link_to "Post a Need", "/needs/new"  %></li>
+              <% end %>
+
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -59,10 +62,10 @@
                 <h3>Filter</h3>
                  <ul class="nav nav-list">
                     <form action="/needs">
+                      <li><%= collection_select(:need, :category, Category.all, :id, :title, :include_blank => 'All Categories') %></li>
                       <li><input type="text" id="search" class="search" placeholder="Search Terms" name="q" /></li>
                       <li><input data-datepicker="datepicker" id="start_date" class="small date-query" type="text" name="start_date" placeholder="From"</li>
                       <li><input data-datepicker="datepicker" id="end_date" class="small date-query" type="text" name="end_date" placeholder="To"</li>
-                      <li><%= collection_select(:need, :category, Category.all, :id, :title, :include_blank => 'all') %></li>
                       <li><input type="submit" value="Search Needs" class="btn btn-info" /></li>
                     </form>
                 </ul>

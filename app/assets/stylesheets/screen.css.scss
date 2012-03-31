@@ -43,6 +43,10 @@ td{
 	line-height: 27px;
 }
 
+#need_category{
+	width: 120px;
+}
+
 #index{
 	.need{
 		@include clearfix;
@@ -58,22 +62,37 @@ td{
 		}
 		.desc{
 			clear: left;
+			font-size: 14px;
 		}
 		.date{
-			display: inline;
+			padding-bottom: 5px;
 		}
 		.slots{
 			float: right;
+			position: relative;
+			padding-top: 10px;
+			h5{
+				position: absolute;
+				right: 160px;
+				margin-top: -20px;
+			}
+			.note{
+				text-align: right;
+				float: left;
+				padding-right: 5px;
+				padding-top: 10px;
+			}
 			.slot{
 				@include clearfix;
 				position: relative;
+				padding-left: 20px;
 				.btn{
 					right: 0px;
 					position: absolute;
 					height: 37px;
 				}
 				.text{
-					float: left;
+					float: right;
 					width: 250px;
 				}
 			}

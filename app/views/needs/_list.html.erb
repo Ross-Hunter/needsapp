@@ -9,7 +9,8 @@
         <h5>Sign Up to Help</h5>
         <%= form.fields_for :slots do |slot| %>
           <div class ="slot">
-            <% if slot.object.name > '' %>
+            <div class = "note"><%= slot.object.note %></div>
+            <% if slot.object.name %>
               <%= slot.text_field :name, :readOnly => 'true', :class=> 'text' %>
             <% else %>
               <%= slot.text_field :name, :class=> 'text' %>
@@ -20,10 +21,11 @@
         </div>
       <% end %>
       <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
-      <span class="date"> - <%= need.date.strftime('%Y-%m-%d') %></span>
-      <% if need.time1 > '' %>
-        <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
-      <% end %>
+      <div class="date"><%= need.date.strftime('%Y-%m-%d') %>
+        <% if need.time1 > '' %>
+          <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
+        <% end %>
+      </div>
       <div class="desc"><%= need.desc %></div>
     </div>
   <% end %>

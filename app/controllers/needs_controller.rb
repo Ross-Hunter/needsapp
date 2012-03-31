@@ -2,7 +2,6 @@ class NeedsController < ApplicationController
   # GET /needs
   # GET /needs.json
   def index
-
     start_date = Date.today
     end_date = Date.today + 1.year
 
@@ -48,6 +47,12 @@ class NeedsController < ApplicationController
   # GET /needs/new
   # GET /needs/new.json
   def new
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @need = Need.new
     @need.slots.build
     respond_to do |format|
@@ -58,12 +63,24 @@ class NeedsController < ApplicationController
 
   # GET /needs/1/edit
   def edit
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @need = Need.find(params[:id])
   end
 
   # POST /needs
   # POST /needs.json
   def create
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @need = Need.new(params[:need])
     respond_to do |format|
       if @need.save
@@ -95,6 +112,12 @@ class NeedsController < ApplicationController
   # DELETE /needs/1
   # DELETE /needs/1.json
   def destroy
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @need = Need.find(params[:id])
     @need.destroy
 

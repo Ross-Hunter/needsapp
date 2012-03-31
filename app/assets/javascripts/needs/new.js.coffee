@@ -9,7 +9,7 @@ $('#new_slot').on 'click', ()->
 	else
 		newNum = currentNum.substr(23, 2)
 	newNum = parseInt(newNum) + 1
-	newNum = "need[slots_attributes][" + newNum + "][name]"
+	newNum = "need[slots_attributes][" + newNum + "][note]"
 	$newSlot.find('input').attr('name', newNum).val('')
 	$newSlot.find('a').attr('href', '/slots')
 

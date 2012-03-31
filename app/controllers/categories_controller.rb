@@ -24,6 +24,12 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @category = Category.new
 
     respond_to do |format|
@@ -34,6 +40,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @category = Category.find(params[:id])
   end
 
@@ -56,6 +68,12 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -72,6 +90,12 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
+
     @category = Category.find(params[:id])
     @category.destroy
 

@@ -24,6 +24,11 @@ class SlotsController < ApplicationController
   # GET /slots/new
   # GET /slots/new.json
   def new
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
     @slot = Slot.new
 
     respond_to do |format|
@@ -34,12 +39,22 @@ class SlotsController < ApplicationController
 
   # GET /slots/1/edit
   def edit
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
     @slot = Slot.find(params[:id])
   end
 
   # POST /slots
   # POST /slots.json
   def create
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
     @slot = Slot.new(params[:slot])
 
     respond_to do |format|
@@ -56,6 +71,11 @@ class SlotsController < ApplicationController
   # PUT /slots/1
   # PUT /slots/1.json
   def update
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
     @slot = Slot.find(params[:id])
 
     respond_to do |format|
@@ -72,6 +92,11 @@ class SlotsController < ApplicationController
   # DELETE /slots/1
   # DELETE /slots/1.json
   def destroy
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in to do that!"
+      return
+    end
     @slot = Slot.find(params[:id])
     @slot.destroy
 

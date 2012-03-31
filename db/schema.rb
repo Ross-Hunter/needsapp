@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318021149) do
+ActiveRecord::Schema.define(:version => 20120331175239) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -27,17 +27,26 @@ ActiveRecord::Schema.define(:version => 20120318021149) do
     t.text     "time1"
     t.text     "time2"
     t.text     "time3"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "slots", :force => true do |t|
     t.string   "name"
+    t.string   "note"
     t.integer  "need_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "slots", ["need_id"], :name => "index_slots_on_need_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

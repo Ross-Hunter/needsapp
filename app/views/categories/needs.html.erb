@@ -1,8 +1,37 @@
-<p id="notice"><%= notice %></p>
+<% body_id 'index' %>
+<% body_class 'needs' %>
 
-  <h3><%= @category.title %></h3>
-    <% @needs.each do |need| %>
-    	<%= need.title %>
-    <%end %>
-
-<%= link_to 'Back', categories_path %>
+<% if @needs.first %>
+  <% @needs.each do |need| %>
+    <div class="need">
+      <%= form_for(need) do |form| %>
+      <div class="category">
+        <span class="label"><%= need.category.title unless need.category.blank? %></span>
+      </div>
+      <div class="slots">
+        <h5>Sign Up to Help</h5>
+        <%= form.fields_for :slots do |slot| %>
+          <div class ="slot">
+            <div class = "note"><%= slot.object.note %></div>
+            <% if slot.object.name %>
+              <%= slot.text_field :name, :readOnly => 'true', :class=> 'text' %>
+            <% else %>
+              <%= slot.text_field :name, :class=> 'text' %>
+              <%= form.submit 'Sign Up', :class => 'btn' %>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+      <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
+      <div class="date"><%= need.date.strftime('%Y-%m-%d') %>
+        <% if need.time1 > '' %>
+          <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
+        <% end %>
+      </div>
+      <div class="desc"><%= need.desc %></div>
+    </div>
+  <% end %>
+<% else %>
+  <div>No needs matched your search</div>
+<% end %>
