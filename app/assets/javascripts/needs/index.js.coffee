@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $('#index .slots :text').each ->
 	$(this).next('.btn:submit').css({
-	right: '-80px'
+	right: '-90px'
 	})
 	$(this).on 'focus', () ->
 		$(this).next('.btn:submit').animate({
@@ -12,6 +12,6 @@ $('#index .slots :text').each ->
 	$(this).on 'blur', () ->
 		if $(this).val().length == 0
 			$(this).next('.btn:submit').animate({
-			right: '-80px'
+			right: '-90px'
 			}, 300)
 
