@@ -1,3 +1,19 @@
+<div class="logo">
+  <img src="/assets/logo.png">
+</div>
+
+<% if @category %>
+  <h2><%= @category.title %>:</h2>
+  <div class="category-description">
+    <%= @category.desc %>
+  </div>
+<% else %>
+  <h2>New Hope Lutheran Needs Board</h2>
+  <div class="category-description">
+    Welcome to our needs board. If you have something you would like posted on this board then contact somebody or something. Maybe some more info.
+  </div>
+<% end %>
+
 <% if @needs.first %>
   <% @needs.each do |need| %>
     <div class="need">
@@ -20,7 +36,12 @@
         <% end %>
         </div>
       <% end %>
-      <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
+      <% if current_user %>
+        <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
+      <% else %>
+        <h3 class="title"><%= need.title %></h3>
+      <% end %>
+
       <div class="date"><%= need.date.strftime('%Y-%m-%d') %>
         <% if need.time1 > '' %>
           <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>

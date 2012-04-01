@@ -15,9 +15,13 @@ class NeedsController < ApplicationController
 
     query = Need.scoped
     query = query.between(start_date, end_date).order(:date)
-    query = query.where(:category_id => params["need"]["category"]) if params["need"] && params["need"]["category"]
+    if params["need"] && params["need"]["category"] > ''
+      query = query.where(:category_id => params["need"]["category"])
+      @category = Category.where(:id => params["need"]["category"]).first
+    end
+    query = query.search(params[:q]) if params[:q]
 
-    @needs = query.search(params[:q])
+    @needs = query
 
     respond_to do |format|
       format.html # index.html.erb
