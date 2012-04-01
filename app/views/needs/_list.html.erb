@@ -26,7 +26,7 @@
         <%= form.fields_for :slots do |slot| %>
           <div class ="slot">
             <div class = "note"><%= slot.object.note %></div>
-            <% if slot.object.name %>
+            <% if slot.object.name && slot.object.name > '' %>
               <%= slot.text_field :name, :readOnly => 'true', :class=> 'text' %>
             <% else %>
               <%= slot.text_field :name, :class=> 'text' %>
