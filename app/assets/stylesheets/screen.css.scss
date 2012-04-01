@@ -20,8 +20,8 @@ input{
 	width: 100%;
 }
 
-h1, h4{
-	margin-bottom: 10px;
+h1, h2, h3, h4{
+	font-family: 'Josefin Sans', serif;
 }
 
 #page{
@@ -30,6 +30,7 @@ h1, h4{
 	margin-top: 15px;
 	margin-bottom: 20px;
 	border-radius: 10px;
+	border: 1px solid #888;
 	box-shadow: 0px 5px 5px #CCC;
 }
 
@@ -39,8 +40,11 @@ td{
 
 .btn{
 	margin-bottom: 10px;
-	font-size: 13px;
+	font-size: 18px;
 	line-height: 27px;
+	font-family: 'Josefin Sans', serif;
+	font-weight: bold;
+
 }
 
 a.btn{
@@ -56,7 +60,7 @@ a.btn{
 		margin-top: -10px;
 	}
 	.category-description{
-		min-height: 100px;
+		min-height: 70px;
 		max-width: 570px;
 		margin-bottom: 10px;
 		margin-left: 5px;
@@ -64,18 +68,22 @@ a.btn{
 	.logo{
 		float: right;
 		margin-top: -15px;
+		margin-right: 20px;
 	}
 	.need{
 		@include clearfix;
 		padding: 10px 20px 20px 20px;
 		margin-bottom: 10px;
 		border-radius: 10px;
-		border: 1px solid;
+		border: 1px solid #888;
+		box-shadow: 2px 2px 2px #CCC;
 		form{
 			margin: 0;
 		}
 		h3{
 			display: inline;
+			font-size: 22px;
+			margin-left: -10px;
 		}
 		.desc{
 			clear: left;
