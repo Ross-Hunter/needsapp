@@ -56,9 +56,8 @@
 	font:11px Verdana, Arial, Helvetica, sans-serif;
 }
 .markItUpEditor {
-	font:12px 'Courier New', Courier, monospace;
-	padding:5px;
-	width:690px;
+	padding:15px;
+	width: 95%;
 	height:320px;
 	clear:both;
 	line-height:18px;

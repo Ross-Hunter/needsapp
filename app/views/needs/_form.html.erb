@@ -22,11 +22,6 @@
       <%= f.collection_select :category_id, Category.all, :id, :title, :include_blank => 'None' %>
     </div>
     <div class="field">
-      <%= f.label :desc, 'Description' %><br />
-      <%= f.text_area :desc,
-                      :rows => 5 %>
-    </div>
-    <div class="field">
       <%= f.label :date, 'Date (Required)' %><br />
       <%= f.text_field :date, :class => "date-query", 'data-datepicker' => "datepicker" %>
     </div>
@@ -36,10 +31,15 @@
       <%= f.select :time2, ['00', '15', '30', '45'], {:include_blank => true, :default => nil} %>
       <%= f.select :time3, ['am', 'pm'], {:include_blank => true, :default => nil} %>
     </div>
+    <div class="field">
+      <%= f.label :desc, 'Description' %><br />
+      <%= f.text_area :desc,
+                      :rows => 5 %>
+    </div>
 
 
     <div class="slots">
-      <label>Sign Up Slots With Optional Descriptions </label>
+      <label>Sign Up Slots With Optional Notes</label>
       <br />
       <button id="new_slot" class="btn btn-success">
         Add Slot

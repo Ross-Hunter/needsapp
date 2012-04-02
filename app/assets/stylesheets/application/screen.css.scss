@@ -42,7 +42,8 @@ h1{
 }
 
 h1, h2, h3, h4{
-	font-family: 'Josefin Sans', serif;
+	font-family: 'Century Gothic', serif;
+	font-weight: normal;
 }
 
 #page{
@@ -63,9 +64,7 @@ td{
 	margin-bottom: 10px;
 	font-size: 18px;
 	line-height: 27px;
-	font-family: 'Josefin Sans', serif;
-	font-weight: bold;
-
+	font-family: 'Century Gothic', serif;
 }
 
 a.btn{
@@ -85,6 +84,15 @@ a.btn{
 
 .datepicker{
 	font-size: 12px;
+}
+
+.one-line{
+	float: left;
+	padding-right: 20px;
+}
+
+.field label{
+	font-weight: bold;
 }
 
 #index{

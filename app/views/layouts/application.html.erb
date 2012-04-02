@@ -39,7 +39,6 @@
             </div>
             <div class="span3">
               <div class="well sidebar-nav">
-                <h3>Filter</h3>
                  <ul class="nav nav-list">
                     <form action="/needs">
                       <li><%= collection_select(:need, :category, Category.all, :id, :title, :include_blank => 'All Categories') %></li>
