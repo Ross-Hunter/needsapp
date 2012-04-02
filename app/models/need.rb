@@ -2,7 +2,7 @@ class Need < ActiveRecord::Base
 
 	validates_presence_of :title, :date
 	has_many :slots
-	belongs_to :category, :foreign_key => :id
+	belongs_to :category, :foreign_key => :category_id
 
 	#scope :not_expired, where(:datetime1 => Date.today..(Date.today + 1.year))
 	scope :between, lambda{|start_date, end_date| where(date: start_date..end_date)}
