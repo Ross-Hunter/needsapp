@@ -3,14 +3,18 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $('#new_slot').on 'click', ()->
 	$newSlot = $('.slot').last().clone('true')
-	currentNum = $newSlot.find('input').attr('name')
-	if currentNum.substr(24, 1) == ']'
-		newNum = currentNum.substr(23, 1)
-	else
-		newNum = currentNum.substr(23, 2)
-	newNum = parseInt(newNum) + 1
-	newNum = "need[slots_attributes][" + newNum + "][note]"
-	$newSlot.find('input').attr('name', newNum).val('')
+
+	currentName = $newSlot.find('input').first().attr('name')
+	currentNum = currentName.match(/\d+/g)
+	newNum = parseInt(currentNum) + 1
+	newName = currentName.replace(currentNum, newNum)
+	$newSlot.find('input').first().attr('name', newName).val('')
+
+	currentName = $newSlot.find('input').last().attr('name')
+	currentNum = currentName.match(/\d+/g)
+	newNum = parseInt(currentNum) + 1
+	newName = currentName.replace(currentNum, newNum)
+	$newSlot.find('input').last().attr('name', newName).val('')
 	$newSlot.find('a').attr('href', '/slots')
 
 	$newSlot.appendTo('.slots')
