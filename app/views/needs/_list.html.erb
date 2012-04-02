@@ -5,7 +5,7 @@
 <% if @category %>
   <h1><%= @category.title %>:</h1>
   <div class="category-description">
-    <%= @category.desc %>
+    <%= @category.desc.html_safe %>
   </div>
 <% else %>
   <h1>New Hope Lutheran Needs Board</h1>
@@ -47,7 +47,7 @@
           <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
         <% end %>
       </div>
-      <div class="desc"><%= need.desc %></div>
+      <div class="desc"><%= need.desc.html_safe %></div>
     </div>
   <% end %>
 <% else %>
