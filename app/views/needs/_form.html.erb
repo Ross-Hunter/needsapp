@@ -47,7 +47,8 @@
       <%= f.fields_for :slots do |s| %>
       <div class ="slot">
         <%= link_to 'Remove Slot', s.object, method: :delete, :class=> 'btn btn-danger remove_slot' %>
-        <%= s.text_field :note %>
+        <%= s.text_field :note, :placeholder => 'Note' %>
+        <%= s.text_field :name, :placeholder => 'Name' %>
       </div>
     <% end %>
     </div>
