@@ -82,6 +82,10 @@ a.btn{
 	}
 }
 
+.datepicker{
+	font-size: 12px;
+}
+
 #index{
 	h2{
 		margin-top: -10px;
@@ -157,6 +161,12 @@ a.btn{
 		float: left;
 		clear: left;
 		width: 117px;
+	}
+	#need_date{
+		width: 210px;
+	}
+	#need_time1, #need_time2, #need_time3{
+		width: 60px;
 	}
 	#post_need{
 		width: 117px;

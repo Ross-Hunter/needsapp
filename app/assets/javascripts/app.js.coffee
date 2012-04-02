@@ -13,9 +13,6 @@ class QueryString
 qs = new QueryString()
 
 $('#need_category').val(qs.get('need%5Bcategory%5D'))
-#$('#search').placeholder()
 $('#search').val(qs.get('q').replace('+', ' '))
-#$('#start_date').placeholder()
 $('#start_date').val(qs.get('start_date'))
-#$('#end_date').placeholder()
 $('#end_date').val(qs.get('end_date'))

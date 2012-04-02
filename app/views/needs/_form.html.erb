@@ -14,7 +14,7 @@
   <% if current_user %>
 
     <div class="field">
-      <%= f.label :title %><br />
+      <%= f.label :title, 'Title (Required)' %><br />
       <%= f.text_field :title %>
     </div>
     <div class="field">
@@ -27,11 +27,11 @@
                       :rows => 5 %>
     </div>
     <div class="field">
-      <%= f.label :date %><br />
-      <%= f.date_select :date %>
+      <%= f.label :date, 'Date (Required)' %><br />
+      <%= f.text_field :date, :class => "date-query", 'data-datepicker' => "datepicker" %>
     </div>
     <div class="field">
-      <%= f.label :time1 %><br />
+      <%= f.label :time1, 'Time' %><br />
       <%= f.select :time1, 1..12, {:include_blank => true, :default => nil} %>
       <%= f.select :time2, ['00', '15', '30', '45'], {:include_blank => true, :default => nil} %>
       <%= f.select :time3, ['am', 'pm'], {:include_blank => true, :default => nil} %>
@@ -39,7 +39,8 @@
 
 
     <div class="slots">
-      <h4>Sign-Up Slots</h4>
+      <label>Sign Up Slots With Optional Descriptions </label>
+      <br />
       <button id="new_slot" class="btn btn-success">
         Add Slot
       </button>

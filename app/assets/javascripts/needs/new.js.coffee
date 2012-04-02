@@ -23,4 +23,3 @@ $('.remove_slot').on 'click', ()->
 		false
 
 $('.remove_slot').first().hide()
-
