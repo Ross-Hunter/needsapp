@@ -72,6 +72,13 @@ a.btn{
 	width: 120px;
 }
 
+.administer{
+	.btn{
+		float: left;
+		clear: left;
+	}
+}
+
 #index{
 	h2{
 		margin-top: -10px;
@@ -146,10 +153,10 @@ a.btn{
 	#new_slot{
 		float: left;
 		clear: left;
-		width: 110px;
+		width: 117px;
 	}
 	#post_need{
-		width: 110px;
+		width: 117px;
 		margin-top: 20px;
 	}
 	.actions{
@@ -165,8 +172,7 @@ a.btn{
 	.remove_slot{
 		float: left;
 		clear: left;
-		width: 88px;
-		color: #fff;
+		width: 95px;
 	}
 }
 
