@@ -16,18 +16,15 @@ group :assets do
   gem 'compass-rails'
   gem "twitter-bootstrap-rails", '~> 2.0.4'
   gem "bcrypt-ruby", :require => "bcrypt"
-  #gem "compass_twitter_bootstrap"
+  gem 'american_date'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+
+  #gem "compass_twitter_bootstrap"
 
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

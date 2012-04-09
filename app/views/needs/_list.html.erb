@@ -42,7 +42,7 @@
         <h3 class="title"><%= need.title %></h3>
       <% end %>
 
-      <div class="date"><%= need.date.strftime('%Y-%m-%d') %>
+      <div class="date"><%= need.date.strftime('%A %B %d') %>
         <% if need.time1 > '' %>
           <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
         <% end %>
