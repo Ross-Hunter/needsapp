@@ -34,22 +34,12 @@ class NeedsController < ApplicationController
     end
   end
 
-  # GET /needs/1
-  # GET /needs/1.json
-  def show
-    @need = Need.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-    end
-  end
-
   # GET /needs/new
   # GET /needs/new.json
   def new
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
@@ -123,6 +113,12 @@ class NeedsController < ApplicationController
   end
 
   def search
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+
     @needs = Need.search(params[:q])
   end
 

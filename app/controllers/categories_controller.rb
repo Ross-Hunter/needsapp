@@ -2,6 +2,12 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+
     @categories = Category.all
 
     respond_to do |format|
@@ -10,23 +16,12 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # GET /categories/1
-  # GET /categories/1.json
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @category }
-    end
-  end
-
   # GET /categories/new
   # GET /categories/new.json
   def new
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
@@ -41,7 +36,10 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
       redirect_to root_url, :notice => "You must be logged in to do that!"
       return
     end
@@ -52,6 +50,12 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+
     @category = Category.new(params[:category])
 
     respond_to do |format|
@@ -69,8 +73,8 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.json
   def update
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
@@ -91,8 +95,8 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1.json
   def destroy
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 

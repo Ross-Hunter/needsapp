@@ -4,6 +4,12 @@ class UsersController < ApplicationController
 	end
 
 	def create
+		@current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+
 	  @user = User.new(params[:user])
 	  if @user.save
 	    redirect_to root_url, :notice => "Signed up!"
@@ -13,6 +19,12 @@ class UsersController < ApplicationController
 	end
 
 	  def index
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+
     @users = User.all
 
     respond_to do |format|
