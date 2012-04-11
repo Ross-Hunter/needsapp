@@ -2,6 +2,12 @@ class NeedsController < ApplicationController
   # GET /needs
   # GET /needs.json
   def index
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to root_url, :notice => "Please log in to view this content"
+      return
+    end
+
     start_date  = Date.today
     end_date    = Date.today + 1.year
 
@@ -25,7 +31,6 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @needs }
     end
   end
 
@@ -36,7 +41,6 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @need }
     end
   end
 
@@ -53,15 +57,14 @@ class NeedsController < ApplicationController
     @need.slots.build
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @need }
     end
   end
 
   # GET /needs/1/edit
   def edit
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
@@ -72,8 +75,8 @@ class NeedsController < ApplicationController
   # POST /needs.json
   def create
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
@@ -81,10 +84,8 @@ class NeedsController < ApplicationController
     respond_to do |format|
       if @need.save
         format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully created." }
-        format.json { render json: @need, status: :created, location: @need }
       else
         format.html { render action: "new" }
-        format.json { render json: @need.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -97,10 +98,8 @@ class NeedsController < ApplicationController
     respond_to do |format|
       if @need.update_attributes(params[:need])
         format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully updated." }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @need.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -109,8 +108,8 @@ class NeedsController < ApplicationController
   # DELETE /needs/1.json
   def destroy
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in to do that!"
+    if !@current_user || !@current_user.admin
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
 
