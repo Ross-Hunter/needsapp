@@ -24,7 +24,12 @@
 
  site_description:
    name: Main needs page text
-   default: Edit this text
+   default: Edit this text under site configuration
+   type: text
+
+ login_description:
+   name: Text on login page
+   default: Edit this text under site configuration
    type: text
 #
 # secret:

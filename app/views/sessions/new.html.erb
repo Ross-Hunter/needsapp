@@ -1,6 +1,6 @@
-<h1>Log in to the New Hope Lutheran Needs Board</h1>
+<h1>Log in to <%= Configurable.site_title %></h1>
 
-<p>In order to ensure the privacy of our sign up board, we require all users to enter a passphrase to volunteer.</p>
+<p><%= Configurable.login_description %></p>
 
 <%= form_tag sessions_path do %>
   <p>
