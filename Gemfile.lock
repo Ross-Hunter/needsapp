@@ -49,6 +49,9 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.0.rc.3)
       compass (~> 0.12.rc.0)
+    configurable_engine (0.2.9)
+      activerecord (~> 3)
+      rails (~> 3)
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
@@ -145,6 +148,7 @@ DEPENDENCIES
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
   compass-rails
+  configurable_engine
   jquery-rails
   mysql2
   rails (= 3.2.1)

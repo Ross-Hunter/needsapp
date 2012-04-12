@@ -1,13 +1,24 @@
 class NeedsController < ApplicationController
-  # GET /needs
-  # GET /needs.json
-  def index
+
+  before_filter :authenticate
+
+  def authenticate
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     if !@current_user
-      redirect_to root_url, :notice => "Please log in to view this content"
+      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
+  end
 
+  def authenticate_admin
+    if !@current_user.admin
+      redirect_to '/needs', :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+  end
+
+
+  def index
     start_date  = Date.today
     end_date    = Date.today + 1.year
 
@@ -37,11 +48,7 @@ class NeedsController < ApplicationController
   # GET /needs/new
   # GET /needs/new.json
   def new
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
+    authenticate_admin
 
     @need = Need.new
     @need.slots.build
@@ -52,11 +59,7 @@ class NeedsController < ApplicationController
 
   # GET /needs/1/edit
   def edit
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
+    authenticate_admin
 
     @need = Need.find(params[:id])
   end
@@ -64,11 +67,7 @@ class NeedsController < ApplicationController
   # POST /needs
   # POST /needs.json
   def create
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
+    authenticate_admin
 
     @need = Need.new(params[:need])
     respond_to do |format|
@@ -83,6 +82,8 @@ class NeedsController < ApplicationController
   # PUT /needs/1
   # PUT /needs/1.json
   def update
+    authenticate_admin
+
     @need = Need.find(params[:id])
 
     respond_to do |format|
@@ -97,11 +98,7 @@ class NeedsController < ApplicationController
   # DELETE /needs/1
   # DELETE /needs/1.json
   def destroy
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
+    authenticate_admin
 
     @need = Need.find(params[:id])
     @need.destroy
@@ -113,11 +110,6 @@ class NeedsController < ApplicationController
   end
 
   def search
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
 
     @needs = Need.search(params[:q])
   end

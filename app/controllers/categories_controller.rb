@@ -1,70 +1,50 @@
 class CategoriesController < ApplicationController
+
+  before_filter :authenticate
+
+  def authenticate
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user || !@current_user.admin
+      redirect_to '/needs', :notice => "You must be logged in and have permission to do that!"
+      return
+    end
+  end
+
   # GET /categories
   # GET /categories.json
   def index
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-
     @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @categories }
     end
   end
 
   # GET /categories/new
   # GET /categories/new.json
   def new
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-
     @category = Category.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @category }
     end
   end
 
   # GET /categories/1/edit
   def edit
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-      redirect_to root_url, :notice => "You must be logged in to do that!"
-      return
-    end
-
     @category = Category.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.json
   def create
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-
     @category = Category.new(params[:category])
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render json: @category, status: :created, location: @category }
+        format.html { redirect_to '/categories', notice: 'Category was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,12 +52,6 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.json
   def update
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-
     @category = Category.find(params[:id])
 
     respond_to do |format|
@@ -85,8 +59,6 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -94,12 +66,6 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    if !@current_user || !@current_user.admin
-      redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
-      return
-    end
-
     @category = Category.find(params[:id])
     @category.destroy
 

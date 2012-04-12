@@ -17,6 +17,7 @@ group :assets do
   gem "twitter-bootstrap-rails", '~> 2.0.4'
   gem "bcrypt-ruby", :require => "bcrypt"
   gem 'american_date'
+  gem 'configurable_engine'
 
 
   #gem "compass_twitter_bootstrap"
