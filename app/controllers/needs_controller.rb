@@ -3,6 +3,8 @@ class NeedsController < ApplicationController
   before_filter :authenticate
 
   def authenticate
+    session[:original_target] = request.url
+
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     if !@current_user
       redirect_to root_url, :notice => "You must be logged in and have permission to do that!"
@@ -16,7 +18,6 @@ class NeedsController < ApplicationController
       return
     end
   end
-
 
   def index
     start_date  = Date.today

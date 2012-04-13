@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def authenticate
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     if !@current_user || !@current_user.admin
-      redirect_to '/needs', :notice => "You must be logged in and have permission to do that!"
+      redirect_to needs_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
   end
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to '/categories', notice: 'Category was successfully created.' }
+        format.html { redirect_to categories_url, notice: 'Category was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -56,7 +56,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.html { redirect_to categories_url, notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
       end
