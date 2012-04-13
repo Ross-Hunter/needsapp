@@ -76,7 +76,9 @@ a.btn{
 }
 
 .administer{
+	@include clearfix;
 	.btn{
+		width: 90%;
 		float: left;
 		clear: left;
 	}
@@ -93,6 +95,34 @@ a.btn{
 
 .field label{
 	font-weight: bold;
+	margin-top: 10px;
+}
+
+#password{
+	width: 300px;
+}
+
+.logo{
+	float: right;
+	margin-top: -15px;
+	margin-right: 17px;
+}
+
+.category.label{
+	margin-top: -5px;
+	margin-left: 5px;
+	vertical-align: top;
+	font-size: 14px;
+}
+
+.need{
+	position: relative;
+}
+
+#delete_need{
+	float: right;
+	margin-top: -65px;
+	color: #fff;
 }
 
 #index{
@@ -106,10 +136,6 @@ a.btn{
 		a{
 			color: blue;
 		}
-	}
-	.logo{
-		float: right;
-		margin-top: -15px;
 	}
 	.need{
 		@include clearfix;
@@ -140,10 +166,11 @@ a.btn{
 			float: right;
 			position: relative;
 			padding-top: 15px;
-			h5{
-				position: absolute;
-				right: 140px;
+			.sign-up{
 				margin-top: -20px;
+				text-align: center;
+				width: 240px;
+				padding-left: 25px;
 			}
 			.note{
 				text-align: right;

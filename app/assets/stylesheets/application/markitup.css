@@ -58,10 +58,11 @@
 .markItUpEditor {
 	padding:15px;
 	width: 95%;
-	height:320px;
+	height:140px;
 	clear:both;
 	line-height:18px;
 	overflow:auto;
+	margin-bottom: 10px;
 }
 .markItUpPreviewFrame	{
 	overflow:auto;

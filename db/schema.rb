@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20120412105653) do
   add_index "slots", ["need_id"], :name => "index_slots_on_need_id"
 
   create_table "users", :force => true do |t|
+    t.string   "label"
     t.string   "password_hash"
     t.boolean  "admin"
     t.datetime "created_at",    :null => false

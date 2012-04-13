@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 	def create
 	  @user = User.new(params[:user])
 	  if @user.save
-	    redirect_to root_url, :notice => "Signed up!"
+	    redirect_to '/users', :notice => "Created user"
 	  else
 	    render "new"
 	  end
@@ -34,13 +34,14 @@ class UsersController < ApplicationController
    def update
     @user = User.find(params[:id])
 
-    if @user.id == 1 && @current_user.id != 1
-      redirect_to root_url, :notice => "Only user 1 may edit user 1!"
+    if @user.admin && @current_user.id != 1
+      redirect_to '/users', :notice => "Only user 1 may edit admins!"
+      return
     end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to '/users', notice: 'user was successfully updated.' }
+        format.html { redirect_to '/users', notice: 'User was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -49,6 +50,16 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    if @user.id == 1
+      redirect_to '/users', :notice => "You can't delete user 1"
+      return
+    end
+
+    if @user.admin && @current_user.id != 1
+      redirect_to '/users', :notice => "Only user 1 may delete admins!"
+      return
+    end
+
     @user.destroy
 
     respond_to do |format|
@@ -59,9 +70,10 @@ class UsersController < ApplicationController
    def edit
     @user = User.find(params[:id])
 
-    #protect user #1
-    if @user.id == 1 && @current_user.id != 1
-      redirect_to root_url, :notice => "Only user 1 may edit user 1!"
+    #protect user #1 and admins
+    if @user.id != @current_user.id && @current_user.id != 1
+      redirect_to '/users', :notice => "Only user 1 may edit other admins!"
+      return
     end
 
   end

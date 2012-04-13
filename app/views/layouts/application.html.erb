@@ -49,12 +49,13 @@
                       </form>
                   </ul>
                 </div>
-                <div class="administer">
+                <div class="well administer">
+                  <%= link_to "Home", "/needs", :class=> 'btn btn-warning' %>
                   <% if current_user.admin %>
                     <%= link_to "Post a Need", "/needs/new", :class=> 'btn btn-warning' %>
                     <%= link_to "Manage Categories", "/categories", :class=> 'btn btn-warning' %>
                     <%= link_to "Manage Users", "/users", :class=> 'btn btn-warning' %>
-                    <%= link_to "Site Configuration", "/admin/configurable", :class=> 'btn btn-warning' %>
+                    <%= link_to "Manage Site", "/admin/configurable", :class=> 'btn btn-warning' %>
                   <% end %>
                   <%= link_to "Log Out", "/log_out", :class=> 'btn btn-warning' %>
                 </div>
@@ -64,7 +65,7 @@
         </div>
 
       <footer>
-        <p>&copy; <%= Configurable.site_title + ' ' + Date.today.strftime('%Y') %> </p>
+        <p>&copy; New Hope Lutheran Church <%= Date.today.strftime('%Y') %> </p>
       </footer>
 
     </div> <!-- /container -->

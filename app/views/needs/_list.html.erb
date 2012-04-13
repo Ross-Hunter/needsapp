@@ -16,11 +16,8 @@
   <% @needs.each do |need| %>
     <div class="need">
       <%= form_for(need) do |form| %>
-      <div class="category">
-        <span class="label"><%= need.category.title unless need.category.blank? %></span>
-      </div>
       <div class="slots">
-        <h5>Sign Up to Help</h5>
+        <div class="sign-up">sign up to help</div>
         <%= form.fields_for :slots do |slot| %>
           <div class ="slot">
             <div class = "note"><%= slot.object.note %></div>
@@ -44,6 +41,7 @@
         <% if need.time1 > '' %>
           <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
         <% end %>
+        <span class="category label"><%= need.category.title unless need.category.blank? %></span>
       </div>
       <div class="desc"><%= need.desc.html_safe %></div>
     </div>
