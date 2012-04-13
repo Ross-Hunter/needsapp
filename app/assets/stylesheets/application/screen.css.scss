@@ -35,6 +35,11 @@ input{
 	li input{
 		color: #888;
 	}
+	&.sidebar-nav{
+		form, .btn{
+			margin-bottom: 0;
+		}
+	}
 }
 
 h1{
