@@ -115,10 +115,6 @@ a.btn{
 	font-size: 14px;
 }
 
-.need{
-	position: relative;
-}
-
 #delete_need{
 	float: right;
 	margin-top: -65px;
@@ -139,11 +135,12 @@ a.btn{
 	}
 	.need{
 		@include clearfix;
-		padding: 10px 20px 20px 20px;
+		padding: 10px 20px 5px 20px;
 		margin-bottom: 10px;
 		border-radius: 10px;
 		border: 1px solid #888;
 		box-shadow: 2px 2px 2px #CCC;
+		position: relative;
 		form{
 			margin: 0;
 		}
@@ -171,6 +168,8 @@ a.btn{
 				text-align: center;
 				width: 240px;
 				padding-left: 25px;
+				position: absolute;
+				right: 0;
 			}
 			.note{
 				text-align: right;
