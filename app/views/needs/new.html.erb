@@ -28,9 +28,11 @@
 
     <%= f.label :date, 'Date (Required)' %>
     <%= f.text_field :date, :class => "date-query", 'data-datepicker' => "datepicker" %>
+    <% if !@need.is_repeat %>
 	  <span class="field repeat">
 	    <p>Repeat <%= f.text_field :num_repeats, :size => 2 %> more time(s), every <%= f.text_field :frequency, :size => 2 %> days</p>
 	  </span>
+	  <% end %>
 	</div>
   <div class="field">
     <%= f.label :time1, 'Time' %>

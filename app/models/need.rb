@@ -31,7 +31,6 @@ class Need < ActiveRecord::Base
       duplicate = self.dup()
       duplicate.date = self.date + (frequency * num_repeats).days
 
-
       self.slots.each do |slot|
 				new_slot = duplicate.slots.build()
 				new_slot.note = slot.note

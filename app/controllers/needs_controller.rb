@@ -72,7 +72,9 @@ class NeedsController < ApplicationController
 
     @need = Need.new(params[:need])
 
-    @need.repeat(@need.frequency, @need.num_repeats) unless @need.is_repeat
+    if !@need.is_repeat && @need.num_repeats && @need.frequency
+      @need.repeat(@need.frequency, @need.num_repeats)
+    end
 
     respond_to do |format|
       if @need.save
