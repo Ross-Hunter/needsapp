@@ -34,12 +34,12 @@
       <% if admin? %>
         <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
         <% if need.category %>
-          <span class="category label"><%= need.category.title %></span>
+          <div class="category label"><%= need.category.title %></div>
         <% end %>
       <% else %>
         <h3 class="title"><%= need.title %></h3>
         <% if need.category %>
-          <span class="category label"><%= need.category.title %></span>
+          <div class="category label"><%= need.category.title %></div>
         <% end %>
       <% end %>
 
