@@ -36,9 +36,10 @@ class Need < ActiveRecord::Base
 				new_slot.note = slot.note
 				new_slot.name = slot.name
       end
+
+      num_repeats = num_repeats - 1
       duplicate.is_repeat = true
       duplicate.save
-      num_repeats = num_repeats - 1
     end
   end
 
