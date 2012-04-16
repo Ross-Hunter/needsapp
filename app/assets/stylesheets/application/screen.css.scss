@@ -119,7 +119,8 @@ a.btn{
 }
 
 #delete_need{
-	float: right;
+	float: left;
+	margin-left: 150px;
 	margin-top: -65px;
 	color: #fff;
 }
@@ -220,7 +221,6 @@ a.btn{
 	}
 	#post_need{
 		width: 132px;
-		margin-top: 20px;
 	}
 	.actions{
 		@include clearfix;

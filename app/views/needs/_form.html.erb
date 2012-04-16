@@ -1,4 +1,4 @@
-<%= form_for(@need) do |f| %>
+  <%= form_for(@need) do |f| %>
   <% if @need.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@need.errors.count, "error") %> prohibited this need from being saved:</h2>
@@ -45,7 +45,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Post Need', :class => 'btn submit btn-primary', :id => 'post_need' %>
+    <%= f.submit 'Post Need', :class => 'btn submit btn-info', :id => 'post_need' %>
   </div>
 
 <% end %>
