@@ -36,7 +36,14 @@ input{
 		color: #888;
 	}
 	&.sidebar-nav{
-		form, .btn{
+		.btn{
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: 0;
+			padding-right: 0;
+		}
+		form, .btn.last{
 			margin-bottom: 0;
 		}
 	}
@@ -78,15 +85,6 @@ a.btn{
 
 #need_category{
 	width: 100%;
-}
-
-.administer{
-	@include clearfix;
-	.btn{
-		width: 90%;
-		float: left;
-		clear: left;
-	}
 }
 
 .datepicker{

@@ -24,12 +24,6 @@
     <%= f.text_field :date, :class => "date-query", 'data-datepicker' => "datepicker" %>
   </div>
   <div class="field">
-    <%= f.label :time1, 'Time' %>
-    <%= f.select :time1, 1..12, {:include_blank => true, :default => nil} %>
-    <%= f.select :time2, ['00', '15', '30', '45'], {:include_blank => true, :default => nil} %>
-    <%= f.select :time3, ['am', 'pm'], {:include_blank => true, :default => nil} %>
-  </div>
-  <div class="field">
     <%= f.label :desc, 'Description' %>
     <%= f.text_area :desc,
                     :rows => 5 %>

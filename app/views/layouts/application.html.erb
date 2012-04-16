@@ -45,19 +45,21 @@
                         <li><input data-datepicker="datepicker" data-date-format="mm/dd/yy" id="start_date" class="small date-query" type="text" name="start_date" placeholder="Date: (from)"</li>
                         <li><input data-datepicker="datepicker" data-date-format="mm/dd/yy" id="end_date" class="small date-query" type="text" name="end_date" placeholder="Date: (to)"</li>
                         <li><input type="text" id="search" class="search" placeholder="Search:" name="q" /></li>
-                        <input type="submit" value="Search Needs" class="btn btn-info" />
+                        <input type="submit" value="Search Needs" class="btn btn-info last" />
                       </form>
                   </ul>
                 </div>
-                <div class="well administer">
-                  <%= link_to "Home", "/needs", :class=> 'btn btn-warning' %>
-                  <% if current_user.admin %>
-                    <%= link_to "Post a Need", "/needs/new", :class=> 'btn btn-warning' %>
-                    <%= link_to "Manage Categories", "/categories", :class=> 'btn btn-warning' %>
-                    <%= link_to "Manage Users", "/users", :class=> 'btn btn-warning' %>
-                    <%= link_to "Manage Site", "/admin/configurable", :class=> 'btn btn-warning' %>
-                  <% end %>
-                  <%= link_to "Log Out", "/log_out", :class=> 'btn btn-warning' %>
+                <div class="well administer sidebar-nav">
+                  <div class="nav nav-list">
+                    <%= link_to "Home", "/needs", :class=> 'btn btn-warning' %>
+                    <% if current_user.admin %>
+                      <%= link_to "Post a Need", "/needs/new", :class=> 'btn btn-warning' %>
+                      <%= link_to "Manage Categories", "/categories", :class=> 'btn btn-warning' %>
+                      <%= link_to "Manage Users", "/users", :class=> 'btn btn-warning' %>
+                      <%= link_to "Manage Site", "/admin/configurable", :class=> 'btn btn-warning' %>
+                    <% end %>
+                    <%= link_to "Log Out", "/log_out", :class=> 'btn btn-warning last' %>
+                  </div>
                 </div>
               </div>
             <% end %>
