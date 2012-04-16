@@ -33,16 +33,20 @@
       <% end %>
       <% if admin? %>
         <h3 class="title"><%= link_to need.title, edit_need_path(need) %></h3>
-      <% else %>
-        <h3 class="title"><%= need.title %></h3>
-      <% end %>
-
-      <div class="date"><%= need.date.strftime('%A %B %d') %>
         <% if need.category %>
           <span class="category label"><%= need.category.title %></span>
         <% end %>
+      <% else %>
+        <h3 class="title"><%= need.title %></h3>
+        <% if need.category %>
+          <span class="category label"><%= need.category.title %></span>
+        <% end %>
+      <% end %>
 
+      <div class="date">
+        <%= need.date.strftime('%A %B %d') %>
       </div>
+
       <div class="desc"><%= need.desc.html_safe %></div>
     </div>
   <% end %>
