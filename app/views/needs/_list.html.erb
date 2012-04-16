@@ -38,9 +38,6 @@
       <% end %>
 
       <div class="date"><%= need.date.strftime('%A %B %d') %>
-        <% if need.time1 > '' %>
-          <span class="time"> - <%= need.time1 %>:<%= need.time2 %> <%= need.time3 %></span>
-        <% end %>
         <% if need.category %>
           <span class="category label"><%= need.category.title %></span>
         <% end %>

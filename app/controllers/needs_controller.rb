@@ -88,8 +88,6 @@ class NeedsController < ApplicationController
   # PUT /needs/1
   # PUT /needs/1.json
   def update
-    authenticate_admin
-
     @need = Need.find(params[:id])
 
     respond_to do |format|
