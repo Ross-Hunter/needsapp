@@ -71,6 +71,9 @@ class NeedsController < ApplicationController
     authenticate_admin
 
     @need = Need.new(params[:need])
+
+    @need.repeat(@need.frequency, @need.num_repeats) unless @need.is_repeat
+
     respond_to do |format|
       if @need.save
         format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully created." }

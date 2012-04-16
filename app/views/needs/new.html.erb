@@ -3,4 +3,65 @@
 
 <h1>New need</h1>
 
-<%= render 'form' %>
+<%= form_for(@need) do |f| %>
+  <% if @need.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@need.errors.count, "error") %> prohibited this need from being saved:</h2>
+
+      <ul>
+      <% @need.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, 'Title (Required)' %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :title, :include_blank => 'None' %>
+  </div>
+  <div class="field">
+
+    <%= f.label :date, 'Date (Required)' %>
+    <%= f.text_field :date, :class => "date-query", 'data-datepicker' => "datepicker" %>
+	  <span class="field repeat">
+	    <p>Repeat <%= f.text_field :num_repeats, :size => 2 %> more time(s), every <%= f.text_field :frequency, :size => 2 %> days</p>
+	  </span>
+	</div>
+  <div class="field">
+    <%= f.label :time1, 'Time' %>
+    <%= f.select :time1, 1..12, {:include_blank => true, :default => nil} %>
+    <%= f.select :time2, ['00', '15', '30', '45'], {:include_blank => true, :default => nil} %>
+    <%= f.select :time3, ['am', 'pm'], {:include_blank => true, :default => nil} %>
+  </div>
+  <div class="field">
+    <%= f.label :desc, 'Description' %>
+    <%= f.text_area :desc,
+                    :rows => 5 %>
+  </div>
+
+
+  <div class="field slots">
+    <label>Sign-Up Slots With Optional Notes</label>
+    <button id="new_slot" class="btn btn-success">
+      Add Slot
+    </button>
+    <%= f.fields_for :slots do |s| %>
+    <div class ="slot">
+      <%= link_to 'Remove Slot', s.object, method: :delete, :class=> 'btn btn-danger remove_slot' %>
+      <%= s.text_field :note, :placeholder => 'Note' %>
+      <%= s.text_field :name, :placeholder => 'Name' %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Post Need', :class => 'btn submit btn-primary', :id => 'post_need' %>
+  </div>
+
+<% end %>
+

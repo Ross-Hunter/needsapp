@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20120412105653) do
     t.text     "time1"
     t.text     "time2"
     t.text     "time3"
+    t.boolean  "is_repeat", :null => false, :default => 0
+    t.integer  "frequency"
+    t.integer  "num_repeats"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

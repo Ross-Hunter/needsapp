@@ -201,6 +201,14 @@ a.btn{
 }
 
 #edit, #create{
+	#need_num_repeats, #need_frequency{
+		display: inline;
+		width: 20px;
+	}
+	.repeat{
+		position:absolute;
+		margin-left: 30px;
+	}
 	#new_slot{
 		float: left;
 		clear: left;
