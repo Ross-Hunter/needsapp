@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
- def after_sign_in_path
+	layout 'login'
+
+ 	def after_sign_in_path
     if session[:original_target]
       url = session[:original_target]
       session[:original_target] = nil
@@ -9,7 +11,6 @@ class SessionsController < ApplicationController
     end
     url
   end
-
 
 	def new
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
