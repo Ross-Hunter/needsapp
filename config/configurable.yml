@@ -31,6 +31,11 @@
    name: Text on login page
    default: Edit this text under site configuration
    type: text
+
+ footer_message:
+   name: Text in the footer
+   default: Edit this text under site configuration
+   type: text
 #
 # secret:
 #   name: Secret Password for Accessing Secret Areas
