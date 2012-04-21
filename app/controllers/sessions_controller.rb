@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 	def new
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
     if @current_user
-      	redirect_to '/needs', :notice => "Successfully logged in!"
+      	redirect_to needs_url, :notice => "Successfully logged in!"
     end
 	end
 

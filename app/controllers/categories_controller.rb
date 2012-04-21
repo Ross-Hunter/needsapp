@@ -43,8 +43,6 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to categories_url, notice: 'Category was successfully created.' }
-      else
-        format.html { render action: "new" }
       end
     end
   end
@@ -57,8 +55,6 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to categories_url, notice: 'Category was successfully updated.' }
-        format.json { head :no_content }
-      else
       end
     end
   end
@@ -71,7 +67,6 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to categories_url }
-      format.json { head :no_content }
     end
   end
 

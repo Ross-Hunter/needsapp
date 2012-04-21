@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to '/users', notice: 'User was successfully updated.' }
+        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -51,12 +51,12 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.id == 1
-      redirect_to '/users', :notice => "You can't delete user 1"
+      redirect_to users_url, :notice => "You can't delete user 1"
       return
     end
 
     if @user.admin && @current_user.id != 1
-      redirect_to '/users', :notice => "Only user 1 may delete admins!"
+      redirect_to users_url, :notice => "Only user 1 may delete admins!"
       return
     end
 
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 
     #protect user #1 and admins
     if @user.id != @current_user.id && @current_user.id != 1
-      redirect_to '/users', :notice => "Only user 1 may edit other admins!"
+      redirect_to users_url, :notice => "Only user 1 may edit other admins!"
       return
     end
 

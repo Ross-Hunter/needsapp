@@ -14,9 +14,13 @@ class NeedsController < ApplicationController
 
   def authenticate_admin
     if !@current_user.admin
-      redirect_to '/needs', :notice => "You must be logged in and have permission to do that!"
+      redirect_to needs_url, :notice => "You must be logged in and have permission to do that!"
       return
     end
+  end
+
+  def search
+    @needs = Need.search(params[:q])
   end
 
   def index
@@ -39,7 +43,7 @@ class NeedsController < ApplicationController
     end
     query = query.search(params[:q]) if params[:q]
 
-    @needs = query
+    @needs = query.limit(Configurable.needs_per_query)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -78,7 +82,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.save
-        format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully created." }
+        format.html { redirect_to needs_urls, notice: "\"#{@need.title}\" was successfully created." }
       else
         format.html { render action: "new" }
       end
@@ -92,7 +96,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.update_attributes(params[:need])
-        format.html { redirect_to '/needs', notice: "\"#{@need.title}\" was successfully updated." }
+        format.html { redirect_to needs_url, notice: "\"#{@need.title}\" was successfully updated." }
       else
         format.html { render action: "edit" }
       end
@@ -111,11 +115,6 @@ class NeedsController < ApplicationController
       format.html { redirect_to needs_url }
       format.json { head :no_content }
     end
-  end
-
-  def search
-
-    @needs = Need.search(params[:q])
   end
 
 end

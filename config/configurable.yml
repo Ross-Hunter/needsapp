@@ -36,6 +36,11 @@
    name: Text in the footer
    default: Edit this text under site configuration
    type: text
+
+ needs_per_query:
+   name: Limit of needs that show up on one query
+   default: 25
+   type: integer
 #
 # secret:
 #   name: Secret Password for Accessing Secret Areas
