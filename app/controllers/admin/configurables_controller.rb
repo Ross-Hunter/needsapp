@@ -1,6 +1,6 @@
 class Admin::ConfigurablesController < ApplicationController
 	Rails.application.eager_load!
-	include ConfigurableEngine::ConfigurablesController
+	#include ConfigurableEngine::ConfigurablesController
 
 	before_filter :authenticate_admin
 
