@@ -37,9 +37,10 @@ class NeedsController < ApplicationController
       query = query.where(:category_id => params["need"]["category"])
       @category = Category.where(:id => params["need"]["category"]).first
     end
-    query = query.search(params[:q]) if params[:q]
-
-    if query.first
+    if params[:q]
+      #limiting and searching do not work together, I am punting for now
+      query = query.search(params[:q])
+    else
       query = query.limit(Configurable.needs_per_query)
     end
 
