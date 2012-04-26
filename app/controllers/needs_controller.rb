@@ -19,10 +19,6 @@ class NeedsController < ApplicationController
     end
   end
 
-  def search
-    @needs = Need.search(params[:q])
-  end
-
   def index
     start_date  = Date.today
     end_date    = Date.today + 1.year
@@ -43,7 +39,11 @@ class NeedsController < ApplicationController
     end
     query = query.search(params[:q]) if params[:q]
 
-    @needs = query.limit(Configurable.needs_per_query)
+    if query.first
+      query = query.limit(Configurable.needs_per_query)
+    end
+
+    @needs = query
 
     respond_to do |format|
       format.html # index.html.erb
@@ -82,7 +82,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.save
-        format.html { redirect_to needs_urls, notice: "\"#{@need.title}\" was successfully created." }
+        format.html { redirect_to needs_url, notice: "\"#{@need.title}\" was successfully created." }
       else
         format.html { render action: "new" }
       end
