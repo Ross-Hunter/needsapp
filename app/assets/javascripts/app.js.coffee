@@ -13,11 +13,12 @@ class QueryString
 jQuery ->
 	qs = new QueryString()
 
-	if qs.get('need%5Bcategory%5D')
-		$('#need_category').val(qs.get('need%5Bcategory%5D'))
-	if qs.get('q')
-		$('#search').val(qs.get('q').replace(/\+/g, ' '))
-	if qs.get('start_date')
-		$('#start_date').val(qs.get('start_date').replace(/%2F/g, '/'))
-	if qs.get('end_date')
-		$('#end_date').val(qs.get('end_date').replace(/%2F/g, '/'))
+	if qs
+		if qs.get('need%5Bcategory%5D')
+			$('#need_category').val(qs.get('need%5Bcategory%5D'))
+		if qs.get('q')
+			$('#search').val(qs.get('q').replace(/\+/g, ' '))
+		if qs.get('start_date')
+			$('#start_date').val(qs.get('start_date').replace(/%2F/g, '/'))
+		if qs.get('end_date')
+			$('#end_date').val(qs.get('end_date').replace(/%2F/g, '/'))
