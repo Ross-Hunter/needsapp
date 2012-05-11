@@ -97,7 +97,7 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.update_attributes(params[:need])
-        format.html { redirect_to needs_url, notice: "\"#{@need.title}\" was successfully updated." }
+        format.html { redirect_to :back, notice: "\"#{@need.title}\" was successfully updated." }
       else
         format.html { render action: "edit" }
       end
