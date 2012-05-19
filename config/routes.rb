@@ -8,13 +8,17 @@ Needsapp2::Application.routes.draw do
 
 
   resources :users
-  resources :slots
+  #resources :slots
   resources :sessions
-  resources :categories do
-    member do
-      get :needs
-    end
-  end
+
+  #Commented out showing needs per category
+  #Instead we use a combined search operation
+  resources :categories # do
+  #  member do
+  #    get :needs
+  #  end
+  #end
+
   resources :needs do
     collection do
       get :search

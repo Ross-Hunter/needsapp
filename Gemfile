@@ -5,18 +5,18 @@ gem 'rails', '3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-gem 'configurable_engine'
-gem "bcrypt-ruby", :require => "bcrypt"
-gem 'american_date'
-gem "twitter-bootstrap-rails"
-gem 'compass'
-gem 'compass-rails'
+gem 'mysql2', '~> 0.3.11'
+gem 'configurable_engine', '~> 0.2.9'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'american_date', '~> 1.0.0'
+gem "twitter-bootstrap-rails", '~>2.0.6'
+gem 'compass', '~> 0.12.rc.1'
+gem 'compass-rails', '~> 1.0.0.rc.3'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
-gem 'therubyracer'
-gem 'jquery-rails'
+gem 'therubyracer', '~> 0.10.1'
+gem 'jquery-rails', '~> 2.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,3 +1,4 @@
+#This is for site wide configurations such as footer text
 class Admin::ConfigurablesController < ApplicationController
 	include ConfigurableEngine::ConfigurablesController
 

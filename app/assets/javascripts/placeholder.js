@@ -1,5 +1,5 @@
 // Released under MIT license: http://www.opensource.org/licenses/mit-license.php
-
+//Cross browser placeholder script
 $('[placeholder]').focus(function() {
   var input = $(this);
   if (input.val() == input.attr('placeholder')) {

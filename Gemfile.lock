@@ -129,16 +129,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  american_date
+  american_date (~> 1.0.0)
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
-  compass
-  compass-rails
-  configurable_engine
-  jquery-rails
-  mysql2
+  compass (~> 0.12.rc.1)
+  compass-rails (~> 1.0.0.rc.3)
+  configurable_engine (~> 0.2.9)
+  jquery-rails (~> 2.0.0)
+  mysql2 (~> 0.3.11)
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
-  therubyracer
-  twitter-bootstrap-rails
+  therubyracer (~> 0.10.1)
+  twitter-bootstrap-rails (~> 2.0.6)
   uglifier (>= 1.0.3)

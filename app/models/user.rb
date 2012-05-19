@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   def encrypt_password
     if password.present?
       #Hardcoding a salt is a really bad idea - but I think password hashing alone is sufficient for this app
+      #Allows us to authenticate using only a password and not a username
       self.password_hash = BCrypt::Engine.hash_secret(password, '$2a$10$Ch9fWSFHEz72UeHz5d0CeO')
     end
   end

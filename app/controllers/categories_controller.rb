@@ -70,9 +70,10 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def needs
-    @category = Category.find(params[:id])
-    @needs = @category.needs
-  end
+  #For showing all needs that belong to a cateory - not used in final app
+  #def needs
+    #@category = Category.find(params[:id])
+    #@needs = @category.needs
+  #end
 
 end
