@@ -8,7 +8,7 @@ Needsapp2::Application.routes.draw do
 
 
   resources :users
-  #resources :slots
+  resources :slots
   resources :sessions
 
   #Commented out showing needs per category
