@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: MyString
-  password_hash: MyString
-  password_salt: MyString
-
-two:
-  email: MyString
-  password_hash: MyString
-  password_salt: MyString
+  label: Test Admin
+  password_hash: $2a$10$Ch9fWSFHEz72UeHz5d0CeOmzEPw6qkHYop4MoGwP2UMc0bPtWAzLq
+  admin: 1

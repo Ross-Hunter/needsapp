@@ -18,6 +18,12 @@ gem 'uglifier', '>= 1.0.3'
 gem 'therubyracer', '~> 0.10.1'
 gem 'jquery-rails', '~> 2.0.0'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 #group :assets do
